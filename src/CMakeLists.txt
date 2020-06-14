@@ -1,3 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
-#add_subdirectory(src)
-add_library(Test SHARED test.cpp)
+
+aux_source_directory(. srclist)
+
+add_executable(${CMAKE_PROJECT_NAME} ${srclist})
+add_library(${testee} STATIC ${srclist})

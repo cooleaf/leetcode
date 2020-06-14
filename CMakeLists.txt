@@ -1,7 +1,17 @@
 cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 11)
 project(LeetCode)
 
-add_subdirectory(src src)
-SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-#add_library(test SHARED src/test.cpp)
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+set(testee ${CMAKE_PROJECT_NAME}_lib)
+
+enable_testing()
+
+include_directories(include)
+link_directories(${CMAKE_BINARY_DIR}/lib)
+add_subdirectory(src)
+add_subdirectory(test)
+
