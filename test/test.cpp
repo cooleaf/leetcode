@@ -29,7 +29,7 @@ TEST(MockSample, TestRandomWithRedundantNumber)
     
 }
 
-class TestNumberSolution : public ::testing::Test
+class TestPowSolution : public ::testing::Test
 {
 public:
     void SetUp()
@@ -45,7 +45,7 @@ protected:
 
 };
 
-TEST_F(TestNumberSolution, when_give_positive_number)
+TEST_F(TestPowSolution, when_give_positive_number)
 {
     double x = 10.0;
     int n = 5;
@@ -54,7 +54,7 @@ TEST_F(TestNumberSolution, when_give_positive_number)
     EXPECT_DOUBLE_EQ(100000.00, output);
 }
 
-TEST_F(TestNumberSolution, when_n_is_0)
+TEST_F(TestPowSolution, when_n_is_0)
 {
     double x = 10.0;
     int n = 0;
@@ -62,7 +62,7 @@ TEST_F(TestNumberSolution, when_n_is_0)
     double output = solution.myPow(x, n);
     EXPECT_DOUBLE_EQ(1.00, output);
 }
-TEST_F(TestNumberSolution, when_n_is_0_and_x_is_smallnumber)
+TEST_F(TestPowSolution, when_n_is_0_and_x_is_smallnumber)
 {
     double x = 0.44528;
     int n = 0;
@@ -72,7 +72,7 @@ TEST_F(TestNumberSolution, when_n_is_0_and_x_is_smallnumber)
 }
 
 
-TEST_F(TestNumberSolution, when_n_is_negtive)
+TEST_F(TestPowSolution, when_n_is_negtive)
 {
     double x = 10;
     int n = -5;
@@ -82,7 +82,7 @@ TEST_F(TestNumberSolution, when_n_is_negtive)
     EXPECT_DOUBLE_EQ(expect, output);
 }
 
-TEST_F(TestNumberSolution, when_x_is_0_but_n_is_postive)
+TEST_F(TestPowSolution, when_x_is_0_but_n_is_postive)
 {
     double x = 0;
     int n = 5;
@@ -91,7 +91,7 @@ TEST_F(TestNumberSolution, when_x_is_0_but_n_is_postive)
     EXPECT_DOUBLE_EQ(expect, output);
 }
 
-TEST_F(TestNumberSolution, when_x_is_0_but_n_is_negtive)
+TEST_F(TestPowSolution, when_x_is_0_but_n_is_negtive)
 {
     double x = 0;
     int n = -5;
@@ -99,7 +99,7 @@ TEST_F(TestNumberSolution, when_x_is_0_but_n_is_negtive)
     double expect = double{0};
     EXPECT_DOUBLE_EQ(expect, output);
 }
-TEST_F(TestNumberSolution, when_but_n_is_negtive_1)
+TEST_F(TestPowSolution, when_but_n_is_negtive_1)
 {
     double x = 8.95371;
     int n = -1;
@@ -108,7 +108,7 @@ TEST_F(TestNumberSolution, when_but_n_is_negtive_1)
     EXPECT_DOUBLE_EQ(expect, output);
 }
 
-TEST_F(TestNumberSolution, when_n_is_1)
+TEST_F(TestPowSolution, when_n_is_1)
 {
     double x = 8.95371;
     int n = 1;
@@ -117,7 +117,7 @@ TEST_F(TestNumberSolution, when_n_is_1)
     EXPECT_DOUBLE_EQ(expect, output);
 }
 
-TEST_F(TestNumberSolution, when_but_n_is_maxint)
+TEST_F(TestPowSolution, when_but_n_is_maxint)
 {
     double x = 1;
     int n = INT_MAX;
@@ -125,7 +125,7 @@ TEST_F(TestNumberSolution, when_but_n_is_maxint)
     double expect = double{ 1};
     EXPECT_DOUBLE_EQ(expect, output);
 }
-TEST_F(TestNumberSolution, when_n_is_minint)
+TEST_F(TestPowSolution, when_n_is_minint)
 {
     double x = 1;
     int n = INT_MIN;

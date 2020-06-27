@@ -19,16 +19,16 @@ double Solution::myPostivePow(double x, long long n)
     vector<double> dp (33, 0);
     dp[0] = 1;
     dp[1] = x;
-    cout << "x = " << x << ", n = " << n << endl;
+//    cout << "x = " << x << ", n = " << n << endl;
     for (size_t i = 1; m <= n; i++) {
         if (dp[i] == 0) {
             dp[i] = dp[i-1] * dp[i-1];
         }
-        cout << "i = " << i << ", m = " << m << ", dp[" << i <<"]=" << dp[i] << endl;
-        cout << "n & m " << (n & m) << endl;
+//        cout << "i = " << i << ", m = " << m << ", dp[" << i <<"]=" << dp[i] << endl;
+//        cout << "n & m " << (n & m) << endl;
         if ((n & m)) {
             answer = answer * dp[i];
-            cout << ", answer = " << answer;
+//            cout << ", answer = " << answer;
         }
         cout << endl;
         m = m * 2;
@@ -47,7 +47,7 @@ double Solution::myPow(double x, int n)
     }
     double answer = 0.0;
     long long m = static_cast<long long>(n);
-    cout << " m is " << m << endl;
+//    cout << " m is " << m << endl;
     double x1 = x;
     if (m < 0){
         x1 = 1.0 /x ;
@@ -58,8 +58,39 @@ double Solution::myPow(double x, int n)
     return answer; 
 }
 
+int Solution::firstMissingPositive(vector<int>& nums)
+{
+    int answer = nums.size() + 1;
+    filterNumsInArray(nums);
+    for (int i = 0; i < nums.size(); ++i) {
+        if (nums[i] < 0 ) {
+            answer = i + 1;
+            break;
+        }
+    }
+    return answer;
+}
 
-Game24::Game24(const Random* r) 
+vector<int>& Solution::filterNumsInArray(vector<int> &nums) const
+{
+    size_t count = nums.size();
+    for (size_t i = 0; i < count; i++) {
+        auto num = nums[i];
+        nums[i] = INT_MIN;
+        while ((num > 0) && (num <= count)) {
+            int j = nums[num - 1];
+            if (j != num) {
+                nums[num - 1] = num;
+                num = j;
+            }else{
+                break;
+            }
+        }
+    }
+    return nums;
+}
+
+    Game24::Game24(const Random* r)
 {
     random_ = r;
 }
