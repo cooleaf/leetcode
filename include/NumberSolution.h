@@ -4,9 +4,13 @@
 #include "Random.h"
 #include <memory>
 namespace ns {
-
-int Add(int a, int b);
-
+class Solution
+{
+public:
+    double myPow(double x, int n);
+private:
+    double myPostivePow(double x, long long n);
+};
 
 class Game24 
 {
