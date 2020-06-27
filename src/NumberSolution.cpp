@@ -2,9 +2,11 @@
 #include "Random.h"
 #include <sstream>
 #include <vector>
+#include <unordered_set>
 #include <cmath>
 #include <iostream>
 using std::vector;
+using std::unordered_set;
 using std::cout;
 using std::endl;
 namespace ns{
@@ -90,7 +92,72 @@ vector<int>& Solution::filterNumsInArray(vector<int> &nums) const
     return nums;
 }
 
-    Game24::Game24(const Random* r)
+void Solution::solveSudoku(vector<vector<char>>& board ) const
+{
+    if (board.size() != 9 || board[0].size() != 9) {
+        return;
+    }
+    backTrackSoduku(board, 0, 0);
+}
+
+bool Solution::backTrackSoduku(vector<vector<char>> &board, int lastx, int lasty) const
+{
+    int x = lastx;
+    int y = lasty;
+    auto found = foundNextEmptyElement(board, x, y);
+    if (!found) {
+        return true;
+    }
+    bool ret = false;
+    unordered_set<char> candidates {'1','2','3','4','5','6','7','8','9'};
+    for (int i = 0; i < board[x].size(); ++i) {
+        candidates.erase(board[x][i]);
+    }
+    for (int j = 0; j < board.size(); ++j) {
+        candidates.erase(board[j][y]);
+    }
+    int top = (y / 3) * 3;
+    int left = (x / 3) * 3;
+    for (int i = left; i < left + 3; ++i) {
+        for (int j = top; j < top + 3; ++j) {
+            candidates.erase(board[i][j]);
+        }
+    }
+    while (!candidates.empty()){
+        auto n = *(candidates.begin());
+        board[x][y] = n;
+        ret = backTrackSoduku(board, x, y);
+        if (ret){
+            break;
+        }
+        board[x][y] = '*';
+        candidates.erase(n);
+    }
+    return ret;
+}
+
+bool Solution::foundNextEmptyElement(vector<vector<char>> &board, int &x, int &y) const
+{
+    for (int j = y; j < board[x].size(); ++j) {
+        if (board[x][j] == '*') {
+            y = j;
+            return true;
+        }
+    }
+    for (int i = x + 1; i < board.size(); ++i) {
+        for (int j = 0; j < board[x].size(); ++j) {
+            if (board[i][j] == '*') {
+                x = i;
+                y = j;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+Game24::Game24(const Random* r)
 {
     random_ = r;
 }
