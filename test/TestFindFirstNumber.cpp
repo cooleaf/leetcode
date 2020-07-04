@@ -76,3 +76,29 @@ TEST_F(TestFindFirstNumber, when_list_there_is_large_number)
 
     EXPECT_THAT(output, ::testing::Eq(2));
 }
+
+class TestFindKLargest : public ::testing::Test
+{
+protected:
+    ns::Solution solution;
+};
+
+TEST_F(TestFindKLargest, should_return_right_number_when_give_sorted_vector)
+{
+    vector<int> nums {1,2,3,4,5};
+
+    EXPECT_THAT(solution.findKthLargest(nums, 3), ::testing::Eq(3));
+}
+
+TEST_F(TestFindKLargest, should_return_right_number_when_give_unsorted_vector)
+{
+    vector<int> nums {4, 1,2,3,5};
+
+    EXPECT_THAT(solution.findKthLargest(nums, 3), ::testing::Eq(3));
+}
+TEST_F(TestFindKLargest, should_return_right_number_when_give_unsorted_duplicated_vector)
+{
+    vector<int> nums {4, 1,2,3,3,4,5};
+
+    EXPECT_THAT(solution.findKthLargest(nums, 3), ::testing::Eq(4));
+}

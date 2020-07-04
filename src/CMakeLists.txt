@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 #aux_source_directory(. srclist)
 
-set(srclist Random.cpp NumberSolution.cpp)
+set(srclist Random.cpp NumberSolution.cpp TreeSolution.cpp StringSolution.cpp)
 add_library(${testee} STATIC ${srclist})
 set(srclist ${srclist} main.cpp)
 add_executable(${CMAKE_PROJECT_NAME} ${srclist})

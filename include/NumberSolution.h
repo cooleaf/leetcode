@@ -15,6 +15,8 @@ public:
     void solveSudoku(std::vector<std::vector<char>>& board) const;
     bool backTrackSoduku(std::vector<std::vector<char>>& board, int x, int y) const;
     bool foundNextEmptyElement(vector<vector<char>> &board, int &x, int &y) const;
+    int findKthLargest(vector<int>& nums, int k);
+
 private:
     double myPostivePow(double x, long long n);
 

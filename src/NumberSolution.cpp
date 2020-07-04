@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <cmath>
 #include <iostream>
+#include <algorithm>
 using std::vector;
 using std::unordered_set;
 using std::cout;
@@ -154,6 +155,15 @@ bool Solution::foundNextEmptyElement(vector<vector<char>> &board, int &x, int &y
         }
     }
     return false;
+}
+
+int Solution::findKthLargest(vector<int> &nums, int k)
+{
+    if (k > nums.size()) {
+        return -1;
+    }
+    std::sort(nums.begin(), nums.end());
+    return *(nums.rbegin() + (k-1));
 }
 
 
