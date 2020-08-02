@@ -3,3 +3,10 @@
 //
 
 #include "StringSolution.h"
+
+
+int StringSolution::longestValidParentheses(std::string s)
+{
+    return 0;
+}
+

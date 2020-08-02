@@ -5,10 +5,12 @@
 #ifndef LEETCODE_STRINGSOLUTION_H
 #define LEETCODE_STRINGSOLUTION_H
 
+#include <string>
 
 class StringSolution
 {
-
+public:
+    int longestValidParentheses(std::string s);
 };
 
 
